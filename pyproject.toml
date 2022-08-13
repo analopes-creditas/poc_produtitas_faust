@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "produtitas_v2"
+version = "0.1.0"
+description = "Gerenciamento de produto de dados"
+authors = ["anapalopes <ana.lopes1@creditas.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+faust = "^1.10.4"
+python-dotenv = "^0.20.0"
+requests = "^2.28.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
