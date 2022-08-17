@@ -1,0 +1,80 @@
+import os
+import json
+import requests
+
+
+class ApiGithub:
+
+    def __init__(self):
+        self.url_prefix = 'https://api.github.com'
+        self.headers = {
+            'Authorization': f"Bearer {os.getenv('GH_PERSONAL_TOKEN', '')}",
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github+json'
+        }
+
+
+    def read_repos(self, owner: str, repo: str) -> dict:
+        """ Read a repository.
+
+            Parameters:
+                owner (str): The account owner of the repository.
+                repo (str): The name of the repository.
+        """
+
+        url = f'{self.url_prefix}/repos/{owner}/{repo}'
+        response = requests.request('GET', url, headers=self.headers, verify=False)
+        return json.loads(response.text)
+
+
+    def list_org_repos(self, org: str) -> list:
+        """ List an organization repositories.
+
+            Parameters:
+                org (str): The organization name.
+        """
+
+        url = f'{self.url_prefix}/orgs/{org}/repos'
+        response = requests.request('GET', url, headers=self.headers, verify=False)
+        return json.loads(response.text)
+
+
+    def create_org_repos(self, org: str, body: dict) -> dict:
+        """ Create an organization repository.
+
+            Parameters:
+                org (str): The organization name.
+                body (dict): Data to create the repository.
+        """
+
+        url = f'{self.url_prefix}/orgs/{org}/repos'
+        response = requests.request('POST', url, data=json.dumps(body), headers=self.headers, verify=False)
+        return json.loads(response.text)
+
+
+    def create_repos_template(self, template_owner: str, template_repo: str, body: dict) -> dict:
+        """ Create a repository using a template.
+        
+            Parameters:
+                template_owner (str): The account owner of the repository template.
+                template_repo (str): The name of the repository template.
+                body (dict): Data to create the repository.
+        """
+
+        url = f'{self.url_prefix}/repos/{template_owner}/{template_repo}/generate'
+        response = requests.request('POST', url, data=json.dumps(body), headers=self.headers, verify=False)
+        return json.loads(response.text)
+
+
+    def update_repos(self, owner: str, repo: str, body: dict) -> dict:
+        """ Update a repository.
+
+            Parameters:
+                owner (str): The account owner of the repository.
+                repo (str): The name of the repository.
+                body (dict): Data to create the repository.
+        """
+
+        url = f'{self.url_prefix}/repos/{owner}/{repo}'
+        response = requests.request('PATCH', url, data=json.dumps(body), headers=self.headers, verify=False)
+        return json.loads(response.text)
