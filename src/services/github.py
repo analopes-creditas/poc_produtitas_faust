@@ -8,7 +8,7 @@ class ApiGithub:
     def __init__(self):
         self.url_prefix = 'https://api.github.com'
         self.headers = {
-            'Authorization': f"Bearer {os.getenv('GH_PERSONAL_TOKEN', '')}",
+            'Authorization': f"Bearer {os.getenv('GH_PERSONAL_TOKEN')}",
             'Content-Type': 'application/json',
             'Accept': 'application/vnd.github+json'
         }

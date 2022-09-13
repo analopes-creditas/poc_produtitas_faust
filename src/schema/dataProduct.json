@@ -1,0 +1,65 @@
+{
+  "name": "string",
+  "displayName": "string",
+  "description": "string",
+  "service": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "type": "string",
+    "name": "string",
+    "fullyQualifiedName": "string",
+    "description": "string",
+    "displayName": "string",
+    "deleted": true,
+    "href": "string"
+  },
+  "config": {
+    "sql": {
+      "account": "scd",
+      "repository": "string",
+      "query": "string",
+      "targets": [
+        {
+          "type": "topic",
+          "account": "scd",
+          "fullyQualifiedName": "string"
+        }
+      ],
+      "infrastructure": {
+        "clusterSize": "string"
+      },
+      "scheduleInterval": "string"
+    },
+    "notebook": {
+      "account": "scd",
+      "repository": "string",
+      "executionOrder": [
+        "string"
+      ],
+      "infrastructure": {
+        "clusterSize": "string"
+      },
+      "scheduleInterval": "string"
+    }
+  },
+  "owner": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "type": "string",
+    "name": "string",
+    "fullyQualifiedName": "string",
+    "description": "string",
+    "displayName": "string",
+    "deleted": true,
+    "href": "string"
+  },
+  "tags": [
+    {
+      "tagFQN": "string",
+      "description": "string",
+      "source": "TAG",
+      "labelType": "MANUAL",
+      "state": "SUGGESTED",
+      "href": "string"
+    }
+  ],
+  "extension": {}
+}

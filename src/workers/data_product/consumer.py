@@ -1,11 +1,12 @@
 import os
-import core.app as app
+from core.workers.app import create_app
 import core.utils.constants as const
 import core.models.data_product as model
-import core.workers.create_data_product.controller as controller
+import core.workers.data_product.controller as controller
 
 
-principal_topic = app.topic(os.getenv('TOPIC_PIPELINE', ''), value_type=model.DataProduct)
+app = create_app(app_name='data_product')
+principal_topic = app.topic(os.getenv('TOPIC_PIPELINE'), value_type=model.DataProduct)
 
 
 @app.agent(principal_topic)
