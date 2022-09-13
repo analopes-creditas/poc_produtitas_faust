@@ -75,19 +75,17 @@ services:
 
   produtitas:
     container_name: produtitas
+    restart: always
+    env_file:
+      - .env
     tty: true
     build: .
-    # command: ./run.sh
     depends_on:
       - zookeeper
       - kafka
       - postgres
-    # environment:
-    #   - WORKER=core/workers
-    #   - WORKER_PORT=6066
     ports:
-      # - "8084:80"
-      - "8000:8000"
+      - 8000:8000
     expose:
       - 8000
     networks:
